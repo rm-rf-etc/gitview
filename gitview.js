@@ -27,8 +27,8 @@ exec('git config --get remote.origin.url', function(err, stdout, stderr){
 
 	else {
 
-		url = `${repo}/blob/${branch}${path.replace(/\/Users\/[^\/]+\/projects\/[^\/]+/, '')}`
+		url = repo+'/blob/'+branch+path.replace(/\/Users\/[^\/]+\/projects\/[^\/]+/, '')
 	}
 
-	exec(`open ${url}`)
+	exec('open '+url)
 })
