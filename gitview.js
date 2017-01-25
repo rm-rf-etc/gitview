@@ -1,3 +1,8 @@
+#!/usr/bin/env node
+/*
+in bash profile, add
+	alias='node ~/path/gitview.js'
+*/
 
 var exec = require('child_process').exec
 var args = process.argv.slice(2)
@@ -25,5 +30,5 @@ exec('git config --get remote.origin.url', function(err, stdout, stderr){
 		url = `${repo}/blob/${branch}${path.replace(/\/Users\/[^\/]+\/projects\/[^\/]+/, '')}`
 	}
 
-	exec('open ' + url)
+	exec(`open ${url}`)
 })
