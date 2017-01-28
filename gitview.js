@@ -11,11 +11,9 @@ exec('git config --get remote.origin.url', function(err, stdout, stderr){
 
 	if (stdout.length < 1) return;
 
-	var domains = require('./gitview-find-replace.json')
-	var find = domains.find
-	var replace = domains.replace
+	var replacement = require('./gitview-find-replace.json').replacement
 
-	var repo = stdout.replace(find, replace).replace(/\.git[\r\n]*/, '')
+	var repo = replacement + stdout.replace(/[\r\n]/, '').replace('.git', '').split(':')[1]
 	var path = args[0]
 	var branch = args[1] || 'develop'
 
